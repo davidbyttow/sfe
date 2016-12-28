@@ -21,7 +21,7 @@ public final class CommonConfigBundle<T extends BasicServiceConfig> implements C
 
   public static final String ENV_SYSTEM_PROPERTY = "io.bold.env";
   public static final String VERSION_SYSTEM_PROPERTY = "io.bold.version";
-  public static final String TESTING_SYSTEM_PROPERTY = "io.bold.testing";
+  public static final String TESTING_SYSTEM_PROPERTY = "io.bold.com.davidbyttow.sfe.testing";
 
   @Override public void initialize(GuiceBootstrap<?> bootstrap) {
     bootstrap.addModule(new ComponentConfigModule());

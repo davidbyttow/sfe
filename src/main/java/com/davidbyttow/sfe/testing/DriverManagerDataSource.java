@@ -11,7 +11,7 @@ import java.sql.SQLFeatureNotSupportedException;
 import java.util.Properties;
 import java.util.logging.Logger;
 
-/** {@link DataSource} that goes directly to the {@link DriverManager}.  Good only for testing */
+/** {@link DataSource} that goes directly to the {@link DriverManager}.  Good only for com.davidbyttow.sfe.testing */
 public class DriverManagerDataSource implements DataSource, ManagedDataSource {
   private String driverClassName;
   private String url;
