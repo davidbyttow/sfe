@@ -77,12 +77,12 @@ idea {
 
 model {
   components {
-    main(JvmLibrarySpec)
+    sfe(JvmLibrarySpec)
   }
   testSuites {
     test(JUnitTestSuiteSpec) {
       jUnitVersion '4.12'
-      testing $.components.main
+      testing $.components.sfe
     }
   }
 }
