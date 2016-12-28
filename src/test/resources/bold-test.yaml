@@ -1,0 +1,83 @@
+env: development
+
+aws:
+  accessKeyId: AKIAIQSLGESZ4N6V6UMQ
+  secretAccessKey: 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
+
+content:
+  privacyPostUrl: https://bold.bold.io/post/privacy-policy-naujnz
+  termsPostUrl: https://bold.bold.io/post/terms-of-use-nwdogc
+  helpPostUrl: https://bold.bold.io/post/tips-tricks-xefahm
+  learnMoreUrl: https://bold.bold.io/post/make-your-words-stand-out-udvqaw
+  updatePostIds:
+    - d99dcf544f236918e72b21f574734db9
+
+database:
+  readReplicas:
+    - jdbc:mysql://localhost:3306/ebdb
+  driverClass: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/ebdb
+  user: root
+  password:
+  initialSize: 5
+  minSize: 5
+  maxSize: 10
+  properties:
+    charSet: UTF-8
+    autoReconnect: true
+    zeroDateTimeBehavior: convertToNull
+    serverTimezone: America/Los_Angeles
+    useSSL: false
+  maxWaitForConnection: 3s
+  validationQuery: "/* MyService Health Check */ SELECT 1"
+  checkConnectionWhileIdle: false
+  evictionInterval: 10s
+  minIdleTime: 1 minute
+
+googleAuth:
+  clientId: 869213815340-dfe7n27gf4ts2vksnb9i0cj8tfnrv4rc.apps.googleusercontent.com
+  clientSecret: TKvaXo-PepNV5iJwb4ENIW59
+
+logging:
+  level: INFO
+  appenders:
+    - type: console
+
+secretSlack:
+  webhookUrl: https://hooks.slack.com/services/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
+
+server:
+  requestLog:
+    appenders:
+      - type: file
+        archivedLogFilenamePattern: /dev/null/access.%d.log.gz
+  applicationConnectors:
+    - { type: http, port: 8080 }
+  adminConnectors:
+    - { type: http, port: 8081 }
+
+integrations:
+  algolia:
+    appId: 3HKRSSGFO0
+    readOnlyKey: 10da74624c47a765e186649fcdffd5ce
+    writeKey: d1c49063363233e4387330ffd21f80e5
+    adminKey: c081484dbecef9d12819d320a685f5db
+
+  campaignMonitor:
+
+  embedly:
+    apiKey: b40ba5c8245a4bd1a5e9360496348399
+
+  pusher:
+    appId: 186332
+    appKey: a7137c95683c80d81bda
+    appSecret: 60fd1966cfe55ba9984b
+
+  segment:
+    writeKey: 2BJwOMHFfQTX5yjdKuTfZRk6KqngFTaj
+
+  slack:
+    clientId: "10614923239.55149849731"
+    clientSecret: 241670a4a74ccaa22178a7ee9c918fb8
+    redirectUri: http://localhost.com:8080/account/add-slack
+    verificationToken: ng0YlAzJPYkG2ed8aMfBqIZJ

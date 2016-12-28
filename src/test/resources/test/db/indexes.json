@@ -1,0 +1,26 @@
+{
+  "indexes": [
+    {
+      "kind": "Pod",
+      "props": [
+        "intValue",
+        "floatValue"
+      ]
+    },
+    {
+      "kind": "Pod",
+      "props": [
+        "intValue",
+        "dateTimeValue"
+      ]
+    },
+    {
+      "kind": "Pod",
+      "props": [
+        "intValue",
+        "floatValue",
+        "dateTimeValue"
+      ]
+    }
+  ]
+}

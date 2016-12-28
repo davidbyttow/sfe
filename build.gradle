@@ -1,0 +1,88 @@
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+}
+
+plugins {
+  id 'jvm-component'
+  id 'java-lang'
+  id 'java'
+  id 'idea'
+  id 'junit-test-suite'
+}
+
+repositories {
+  mavenCentral()
+  maven {
+    url "https://jitpack.io"
+  }
+}
+
+configurations {
+  all*.exclude module: 'guava-jdk5'
+}
+
+dependencies {
+  compile 'com.amazonaws:aws-java-sdk-s3:1.11.29'
+  compile 'com.amazonaws:aws-java-sdk-ses:1.11.29'
+  compile 'com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.8.1'
+  compile 'com.getsentry.raven:raven-logback:7.7.0'
+  compile 'com.github.jknack:handlebars:4.0.6'
+  compile 'com.google.template:soy:2016-08-25'
+  compile 'com.google.api-client:google-api-client:1.22.0'
+  compile 'com.google.inject:guice:4.1.0'
+  compile 'com.google.inject.extensions:guice-assistedinject:4.1.0'
+  compile 'com.google.inject.extensions:guice-multibindings:4.1.0'
+  compile 'com.google.inject.extensions:guice-servlet:4.1.0'
+  compile 'com.google.guava:guava:19.0'
+  compile 'com.googlecode.java-diff-utils:diffutils:1.3.0'
+  compile 'com.hubspot.dropwizard:dropwizard-guice:1.0.0'
+  compile 'com.mikesamuel:json-sanitizer:1.1'
+  compile 'com.stripe:stripe-java:2.10.0'
+  compile 'commons-io:commons-io:2.5'
+  compile 'io.dropwizard:dropwizard-auth:1.0.0'
+  compile 'io.dropwizard:dropwizard-client:1.0.0'
+  compile 'io.dropwizard:dropwizard-core:1.0.0'
+  compile 'io.dropwizard:dropwizard-forms:1.0.0'
+  compile 'io.dropwizard:dropwizard-jdbi:1.0.0'
+  compile 'io.dropwizard:dropwizard-views:1.0.0'
+  compile 'io.dropwizard:dropwizard-views-mustache:1.0.0'
+  compile 'io.dropwizard.modules:dropwizard-flyway:1.0.0-1'
+  compile 'javax.mail:mail:1.4.7'
+  compile 'mysql:mysql-connector-java:6.0.3'
+  compile 'org.antlr:stringtemplate:3.2.1'
+  compile 'org.apache.commons:commons-collections4:4.0'
+  compile 'org.glassfish.hk2:guice-bridge:2.1.91'
+  compile 'org.glassfish.hk2:hk2-locator:2.1.91'
+  compile 'org.jsoup:jsoup:1.9.1'
+  compile 'org.languagetool:language-en:3.5'
+  compile 'org.twitter4j:twitter4j-core:4.0.5'
+
+  testCompile 'junit:junit:4.11'
+  testCompile 'org.easytesting:fest-assert:1.4'
+  testCompile 'io.dropwizard:dropwizard-testing:1.0.0'
+  testCompile 'org.mockito:mockito-all:2.0.2-beta'
+}
+
+idea {
+  module {
+    excludeDirs = [file(".gradle")]
+    ["build", ".idea", "node_modules", "gradle"].each {
+      excludeDirs << file(it)
+    }
+  }
+}
+
+model {
+  components {
+    main(JvmLibrarySpec)
+  }
+  testSuites {
+    test(JUnitTestSuiteSpec) {
+      jUnitVersion '4.12'
+      testing $.components.main
+    }
+  }
+}
