@@ -78,7 +78,17 @@ idea {
 model {
   components {
     sfe(JvmLibrarySpec)
+    sfe_testing(JvmLibrarySpec) {
+      sources {
+        java {
+          source {
+            srcDirs "src/test/java"
+          }
+        }
+      }
+    }
   }
+
   testSuites {
     test(JUnitTestSuiteSpec) {
       jUnitVersion '4.12'
@@ -86,3 +96,4 @@ model {
     }
   }
 }
+

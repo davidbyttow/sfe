@@ -1,9 +1,5 @@
 package com.davidbyttow.sfe.testing;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.collect.ListMultimap;
-import com.google.common.util.concurrent.MoreExecutors;
-import com.google.inject.util.Providers;
 import com.davidbyttow.sfe.json.Json;
 import com.davidbyttow.sfe.storage.entity.EntitiesStorage;
 import com.davidbyttow.sfe.storage.entity.EntityMetadata;
@@ -14,6 +10,10 @@ import com.davidbyttow.sfe.storage.entity.EntityStore;
 import com.davidbyttow.sfe.storage.entity.SqlExecutor;
 import com.davidbyttow.sfe.storage.entity.index.CompositeIndexDef;
 import com.davidbyttow.sfe.storage.entity.index.IndexGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.collect.ListMultimap;
+import com.google.common.util.concurrent.MoreExecutors;
+import com.google.inject.util.Providers;
 import org.skife.jdbi.v2.DBI;
 
 import java.io.IOException;
@@ -35,6 +35,6 @@ public final class EntityStores {
         new IndexGenerator(sqlExecutor),
         metadataMap);
     metadataService.updateAll();
-    return new EntityStore(es, sqlExecutor, objectMapper, metadataMap, MoreExecutors.listeningDecorator(new ImmediateExecutor()));
+    return new EntityStore(es, sqlExecutor, objectMapper, metadataMap, MoreExecutors.listeningDecorator(new com.davidbyttow.sfe.testing.ImmediateExecutor()));
   }
 }
