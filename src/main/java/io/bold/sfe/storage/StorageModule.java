@@ -1,37 +1,32 @@
 package io.bold.sfe.storage;
 
 import com.codahale.metrics.MetricRegistry;
-import io.bold.sfe.common.MoreReflections;
-import io.bold.sfe.config.BasicServiceConfig;
-import io.bold.sfe.inject.LazySingleton;
-import io.bold.sfe.storage.entity.EntitiesStorage;
-import io.bold.sfe.storage.entity.EntityModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Provides;
+import io.bold.sfe.config.BasicServiceConfig;
+import io.bold.sfe.inject.LazySingleton;
+import io.bold.sfe.storage.entity.EntitiesStorage;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 
 import javax.sql.DataSource;
+import java.util.Set;
 
 public final class StorageModule extends AbstractModule {
 
-  private static final String INDEX_FILE_PATH = "/db/indexes.json";
-
   private final String databaseName;
-  private final String packagePrefix;
+  private final Set<Class<?>> storageProviderClasses;
 
-  public StorageModule(String databaseName, String packagePrefix) {
+  public StorageModule(String databaseName, Set<Class<?>> storageProviderClasses) {
     this.databaseName = databaseName;
-    this.packagePrefix = packagePrefix;
+    this.storageProviderClasses = storageProviderClasses;
   }
 
   protected void configure() {
-    install(new EntityModule(packagePrefix, INDEX_FILE_PATH));
     install(new DbModule<>(EntitiesStorage.class));
-
-    for (Class<?> storageClass : MoreReflections.getTypesAnnotatedWith(packagePrefix, StorageProvider.class)) {
+    for (Class<?> storageClass : storageProviderClasses) {
       install(new DbModule<>(storageClass));
     }
   }
