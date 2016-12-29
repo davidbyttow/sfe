@@ -1,14 +1,15 @@
 package com.davidbyttow.sfe.storage;
 
 import com.codahale.metrics.MetricRegistry;
+import com.davidbyttow.sfe.common.MoreReflections;
+import com.davidbyttow.sfe.config.BasicServiceConfig;
+import com.davidbyttow.sfe.inject.LazySingleton;
+import com.davidbyttow.sfe.storage.entity.EntitiesStorage;
+import com.davidbyttow.sfe.storage.entity.EntityModule;
 import com.google.inject.AbstractModule;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Provides;
-import com.davidbyttow.sfe.common.MoreReflections;
-import com.davidbyttow.sfe.config.BasicServiceConfig;
-import com.davidbyttow.sfe.inject.LazySingleton;
-import com.davidbyttow.sfe.storage.entity.EntityModule;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 
@@ -28,6 +29,7 @@ public final class StorageModule extends AbstractModule {
 
   protected void configure() {
     install(new EntityModule(packagePrefix, INDEX_FILE_PATH));
+    install(new DbModule<>(EntitiesStorage.class));
 
     for (Class<?> storageClass : MoreReflections.getTypesAnnotatedWith(packagePrefix, StorageProvider.class)) {
       install(new DbModule<>(storageClass));
