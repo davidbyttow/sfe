@@ -21,7 +21,7 @@ import java.util.Map;
 
 public final class EntityStores {
   public static EntityStore createEntityStore(DBI dbi) throws IOException {
-    EntityModule module = new EntityModule("io.bold", "/test/db/indexes.json");
+    EntityModule module = new EntityModule("com.davidbyttow.sfe", "/test/db/indexes.json");
     ListMultimap<String, CompositeIndexDef> indexMap =
         module.compositeIndexMap();
     Map<Class<?>, EntityMetadata> metadataMap = module.entityMetadataMapByClass(indexMap);
