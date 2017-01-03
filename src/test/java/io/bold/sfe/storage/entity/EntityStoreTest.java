@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.skife.jdbi.v2.DBI;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.fest.assertions.Assertions.assertThat;
@@ -67,6 +68,12 @@ public class EntityStoreTest {
     static String newId(String id1, String id2) {
       return id1 + ":" + id2;
     }
+  }
+
+  @EntityKind("Listed")
+  static class Listed {
+    @EntityId String id;
+    @Indexed List<String> stringList;
   }
 
   private EntityStore createStore() throws IOException {
@@ -160,6 +167,50 @@ public class EntityStoreTest {
     assertThat(obj.id1).isEqualTo("1");
     assertThat(obj.id2).isEqualTo("2");
     assertThat(obj.stringList).containsExactly("1", "2", "3");
+  }
+
+  @Test public void putIndexedLists() throws Exception {
+    EntityStore store = createStore();
+    Listed listed = new Listed();
+    listed.id = "1";
+    listed.stringList = new ArrayList<>();
+    listed.stringList.add("hello");
+    listed.stringList.add("world");
+    store.put(listed);
+
+    listed = store.get("1", Listed.class);
+    assertThat(listed).isNotNull();
+    assertThat(listed.stringList).containsExactly("hello", "world");
+
+    // Check for just hello
+    Query<Listed> q = Query.newBuilder(Listed.class)
+      .addFilter("stringList", Query.Equality.Equals, "hello")
+      .build();
+
+    List<Listed> results = store.fetch(q);
+    assertThat(results.size()).isEqualTo(1);
+    assertThat(results.get(0).id).isEqualTo("1");
+
+    // Check for world
+    q = Query.newBuilder(Listed.class)
+      .addFilter("stringList", Query.Equality.Equals, "world")
+      .build();
+
+    results = store.fetch(q);
+    assertThat(results.size()).isEqualTo(1);
+    assertThat(results.get(0).id).isEqualTo("1");
+
+    // Remove world
+    listed.stringList.remove(1);
+    store.put(listed);
+
+    // Check for world
+    q = Query.newBuilder(Listed.class)
+      .addFilter("stringList", Query.Equality.Equals, "world")
+      .build();
+
+    results = store.fetch(q);
+    assertThat(results.size()).isEqualTo(0);
   }
 
   @Test public void putNestedObject() throws Exception {

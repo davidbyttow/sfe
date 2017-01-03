@@ -1,9 +1,13 @@
 package io.bold.sfe.storage.entity;
 
+import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
+import com.google.common.collect.ImmutableList;
+import io.bold.sfe.common.MoreReflections;
 import org.joda.time.DateTime;
 
 import java.lang.reflect.Field;
+import java.util.Collection;
 
 public final class EntityFields {
 
@@ -24,6 +28,21 @@ public final class EntityFields {
   @SuppressWarnings("unchecked")
   public static <T> T getValue(Object obj, Field field) {
     return getValue(obj, field, (o, f) -> (T) f.get(o));
+  }
+
+  @SuppressWarnings("unchecked")
+  public static <T> Collection<T> getValues(Object obj, Field field, Class<T> type) {
+    return getValue(obj, field, (o, f) -> {
+      Class<?> elementType = MoreReflections.getFieldCollectionType(field);
+      Preconditions.checkArgument(elementType != null);
+      Preconditions.checkArgument(type.isAssignableFrom(elementType));
+      Class<?> fieldType = field.getType();
+      if (fieldType.isArray()) {
+        T[] values = (T[]) f.get(obj);
+        return ImmutableList.copyOf(values);
+      }
+      return ImmutableList.copyOf((Collection<T>) f.get(o));
+    });
   }
 
   @SuppressWarnings("unchecked")
@@ -60,11 +79,11 @@ public final class EntityFields {
   }
 
   public static String getString(Object obj, Field field) {
-    return EntityFields.<String>getValue(obj, field);
+    return EntityFields.getValue(obj, field);
   }
 
   public static DateTime getDateTime(Object obj, Field field) {
-    return EntityFields.<DateTime>getValue(obj, field);
+    return EntityFields.getValue(obj, field);
   }
 
   public static <T> void setField(T entity, Field field, Object value) {

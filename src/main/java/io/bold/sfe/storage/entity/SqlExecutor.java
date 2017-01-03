@@ -21,7 +21,11 @@ public class SqlExecutor {
   public void update(String sql) {
     DBI dbi = dbiProvider.get();
     try (Handle handle = dbi.open()) {
-      handle.update(sql);
+      for (String stmt : sql.split(";")) {
+        if (!stmt.trim().isEmpty()) {
+          handle.update(stmt);
+        }
+      }
     }
   }
 

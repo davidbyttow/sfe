@@ -29,13 +29,13 @@ class QueryGenerator {
         filterBuilder.append(" AND ");
       }
       filterBuilder.append(String.format("%s %s %s",
-        propField.getType().getColumnName(),
+        propField.getElementType().getColumnName(),
         filter.getEquality().symbol(),
         valueToSqlConstant(propField, filter.getValue())));
     }
 
     StringBuilder sqlBuilder = newPropertyQuery()
-        .append(String.format(" WHERE (prop_key = '%s' AND %s) ORDER BY entity_id",
+        .append(String.format(" WHERE (prop_key >= '%s' AND %s) ORDER BY entity_id",
             firstFilter.getProperty(),
             filterBuilder.toString()))
         .append(" LIMIT ").append(limit).append(';');
@@ -47,9 +47,9 @@ class QueryGenerator {
     Map<String, EntityPropField> indexedFieldMap = metadata.getIndexedFieldMap();
     EntityPropField propField = indexedFieldMap.get(filter.getProperty());
 
-    String columnName = propField.getType().getColumnName();
+    String columnName = propField.getElementType().getColumnName();
     StringBuilder sqlBuilder = newPropertyQuery()
-      .append(String.format(" WHERE (prop_key = '%s' AND %s %s %s) ORDER BY %s",
+      .append(String.format(" WHERE (prop_key >= '%s' AND %s %s %s) ORDER BY %s",
         filter.getProperty(),
         columnName,
         filter.getEquality().symbol(),
@@ -70,7 +70,7 @@ class QueryGenerator {
     StringBuilder sqlBuilder = newPropertyQuery()
         .append(String.format(" WHERE (prop_key = '%s') ORDER BY %s",
             ordering.getProperty(),
-            propField.getType().getColumnName()));
+            propField.getElementType().getColumnName()));
     if (ordering.isDescending()) {
       sqlBuilder.append(" DESC");
     }
@@ -130,7 +130,7 @@ class QueryGenerator {
   }
 
   private String valueToSqlConstant(EntityPropField propField, Object value) {
-    switch (propField.getType()) {
+    switch (propField.getElementType()) {
       case Boolean:
         return ((boolean) value) ? "1" : "0";
       case Integer:

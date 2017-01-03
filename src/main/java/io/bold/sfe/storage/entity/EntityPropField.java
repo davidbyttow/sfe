@@ -7,14 +7,21 @@ import java.lang.reflect.Field;
 public class EntityPropField {
   private final Prop.Type type;
   private final Field field;
+  private Prop.Type elementType;
 
   public static EntityPropField fromField(Field field, boolean indexed) {
     Class<?> type = field.getType();
-    Prop.Type propType;
+    Prop.Type propType = null;
+    Prop.Type elementType = null;
 
-    Class<?> collectionType = MoreReflections.getFieldCollectionType(field);
-    if (collectionType != null) {
-      propType = Prop.Type.List;
+    Class<?> innerType = MoreReflections.getFieldCollectionType(field);
+    if (innerType != null) {
+      // We only use List type when the object is indexed, otherwise it's just a plain old object.
+      Prop.Type innerPropType = PropTypes.fromType(innerType);
+      if (innerPropType != null && indexed) {
+        propType = Prop.Type.List;
+        elementType = innerPropType;
+      }
     } else {
       propType = PropTypes.fromType(type);
     }
@@ -34,7 +41,9 @@ public class EntityPropField {
       }
     }
 
-    return new EntityPropField(propType, field);
+    EntityPropField f = new EntityPropField(propType, field);
+    f.elementType = elementType;
+    return f;
   }
 
   private EntityPropField(Prop.Type type, Field field) {
@@ -52,5 +61,9 @@ public class EntityPropField {
 
   public Field getField() {
     return field;
+  }
+
+  public Prop.Type getElementType() {
+    return (elementType == null) ? type : elementType;
   }
 }
