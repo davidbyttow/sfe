@@ -18,7 +18,7 @@ public final class MoreReflections {
     return reflections.getTypesAnnotatedWith(annotation);
   }
 
-  public static Class<?> getFieldComponentType(Field field) {
+  public static Class<?> getFieldCollectionType(Field field) {
     Class<?> type = field.getType();
     if (type.isArray()) {
       return type.getComponentType();

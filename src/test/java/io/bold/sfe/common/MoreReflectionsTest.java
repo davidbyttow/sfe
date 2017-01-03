@@ -19,10 +19,10 @@ public class MoreReflectionsTest {
   }
 
   @Test public void testGenerics() throws NoSuchFieldException {
-    assertThat(MoreReflections.getFieldComponentType(Foo.class.getDeclaredField("list"))).isEqualTo(Integer.class);
-    assertThat(MoreReflections.getFieldComponentType(Foo.class.getDeclaredField("set"))).isEqualTo(Integer.class);
-    assertThat(MoreReflections.getFieldComponentType(Foo.class.getDeclaredField("collection"))).isEqualTo(Integer.class);
-    assertThat(MoreReflections.getFieldComponentType(Foo.class.getDeclaredField("array"))).isEqualTo(Integer.class);
-    assertThat(MoreReflections.getFieldComponentType(Foo.class.getDeclaredField("bool"))).isNull();
+    assertThat(MoreReflections.getFieldCollectionType(Foo.class.getDeclaredField("list"))).isEqualTo(Integer.class);
+    assertThat(MoreReflections.getFieldCollectionType(Foo.class.getDeclaredField("set"))).isEqualTo(Integer.class);
+    assertThat(MoreReflections.getFieldCollectionType(Foo.class.getDeclaredField("collection"))).isEqualTo(Integer.class);
+    assertThat(MoreReflections.getFieldCollectionType(Foo.class.getDeclaredField("array"))).isEqualTo(Integer.class);
+    assertThat(MoreReflections.getFieldCollectionType(Foo.class.getDeclaredField("bool"))).isNull();
   }
 }

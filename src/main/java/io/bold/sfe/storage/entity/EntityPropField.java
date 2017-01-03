@@ -1,13 +1,22 @@
 package io.bold.sfe.storage.entity;
 
+import io.bold.sfe.common.MoreReflections;
+
 import java.lang.reflect.Field;
 
 public class EntityPropField {
   private final Prop.Type type;
   private final Field field;
+  private boolean isCollection;
 
   public static EntityPropField fromField(Field field, boolean indexed) {
-    Class<?> type = field.getType();
+    Class<?> type = MoreReflections.getFieldCollectionType(field);
+    boolean isCollection = type != null;
+
+    if (type == null) {
+      type = field.getType();
+    }
+
     Prop.Type propType = PropTypes.fromType(type);
     if (propType == null) {
       if (indexed) {
@@ -24,7 +33,9 @@ public class EntityPropField {
       }
     }
 
-    return new EntityPropField(propType, field);
+    EntityPropField propField = new EntityPropField(propType, field);
+    propField.isCollection = isCollection;
+    return propField;
   }
 
   private EntityPropField(Prop.Type type, Field field) {
@@ -42,5 +53,9 @@ public class EntityPropField {
 
   public Field getField() {
     return field;
+  }
+
+  public boolean isCollection() {
+    return isCollection;
   }
 }
