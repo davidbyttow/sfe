@@ -16,11 +16,18 @@ public @interface Prop {
     DateTime(org.joda.time.DateTime::now, "prop_datetime", "DATETIME"),
     Enum(() -> "", "prop_id", "VARCHAR(64)"),
     Id(() -> "", "prop_id", "VARCHAR(64)"),
+    List(() -> null, "", "NULL"),
     Object(() -> null, "", "NULL");
 
     private final Supplier<Object> defaultValueSupplier;
     private final String columnName;
     private final String columnType;
+
+    Type() {
+      this.defaultValueSupplier = null;
+      this.columnName = null;
+      this.columnType = null;
+    }
 
     Type(Supplier<Object> defaultValueSupplier, String columnName, String columnType) {
       this.defaultValueSupplier = defaultValueSupplier;
