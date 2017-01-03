@@ -53,7 +53,6 @@ class UpdateGenerator {
               id, propKey, updatedAt, formatAndValue._2);
           break;
         case String:
-          String stringValue = EntityFields.getValueOrDefault(entity, field, "");
           valueString = String.format("('%s', '%s', '%s', NULL, NULL, NULL, NULL, '%s', NULL, NULL)",
               id, propKey, updatedAt, formatAndValue._2);
           break;

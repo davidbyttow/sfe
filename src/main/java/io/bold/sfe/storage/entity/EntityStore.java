@@ -4,9 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Strings;
 import com.google.common.base.Throwables;
-import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Multimap;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
@@ -25,6 +23,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.Nullable;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -389,7 +388,6 @@ public class EntityStore implements EntityStoreAsync {
     return true;
   }
 
-
   private <T> void forEachEntity(Query<T> query, Consumer<T> consumer) {
     EntityMetadata metadata = fromType(query.getType());
     List<Query.Filter> filters = query.getFilters();
@@ -424,23 +422,28 @@ public class EntityStore implements EntityStoreAsync {
       }
     }
 
+    Map<String, T> loaded = new HashMap<>();
     List<String> resultIds = new ArrayList<>();
-    Multimap<String, EntityPropField> entityPropFields = ArrayListMultimap.create();
-
-    Map<String, EntityPropField> indexedFieldMap = metadata.getIndexedFieldMap();
 
     // TODO(d): Shorten this?
     sqlExecutor.query(sql, row -> {
       String entityId = (String) row.get("entity_id");
-      String propKey = (String) row.get("prop_key");
-      resultIds.add(entityId);
-      EntityPropField propField = indexedFieldMap.get(propKey);
-      entityPropFields.put(entityId, propField);
+      if (!loaded.containsKey(entityId)) {
+        resultIds.add(entityId);
+        loaded.put(entityId, null);
+      }
     });
 
     // TODO(d): Make this more efficient.
     resultIds.stream()
-      .map((entityId) -> readEntity(metadata, entityId, query.getType()))
+      .map((entityId) -> {
+        T e = loaded.get(entityId);
+        if (e == null) {
+          e = readEntity(metadata, entityId, query.getType());
+          loaded.put(entityId, e);
+        }
+        return e;
+      })
       .forEach((entity) -> {
         if (entity != null) {
           consumer.accept(entity);
