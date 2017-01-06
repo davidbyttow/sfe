@@ -72,31 +72,36 @@ public class SlackApiClient {
     post.setHeader("Accept", "application/json");
     ListenableFuture<HttpResponse> future = httpClient.executeAsync(post);
     return Futures.transform(future, (Function<HttpResponse, SlackApiResponse<T>>) response -> {
-      if (response.getStatusLine().getStatusCode() != 200) {
-        log.error("Couldn't post to Slack, got error code: {}", response.getStatusLine().getStatusCode());
-        return null;
-      }
-      String entityString = null;
       try {
-        entityString = EntityUtils.toString(response.getEntity());
-      } catch (IOException e) {
-        throw Throwables.propagate(e);
-      }
-
-      SlackApiResponse<T> resp = new SlackApiResponse<>();
-
-      resp.header = Json.readValue(entityString, SlackApiResponseHeader.class);
-      if (!resp.header.ok) {
-        log.error("Slack API uri={} error={} warning={}", post.getURI(), resp.header.error, resp.header.warning);
-      } else {
-        if (!Strings.isNullOrEmpty(resp.header.warning)) {
-          log.warn("Slack API uri={} warning={}", post.getURI(), resp.header.warning);
+        if (response.getStatusLine().getStatusCode() != 200) {
+          log.error("Couldn't post to Slack, got error code: {}", response.getStatusLine().getStatusCode());
+          return null;
         }
-        if (responseType != null) {
-          resp.data = Json.readValue(entityString, responseType);
+        String entityString = null;
+        try {
+          entityString = EntityUtils.toString(response.getEntity());
+        } catch (IOException e) {
+          throw Throwables.propagate(e);
         }
+
+        SlackApiResponse<T> resp = new SlackApiResponse<>();
+
+        resp.header = Json.readValue(entityString, SlackApiResponseHeader.class);
+        if (!resp.header.ok) {
+          log.error("Slack API uri={} error={} warning={}", post.getURI(), resp.header.error, resp.header.warning);
+        } else {
+          if (!Strings.isNullOrEmpty(resp.header.warning)) {
+            log.warn("Slack API uri={} warning={}", post.getURI(), resp.header.warning);
+          }
+          if (responseType != null) {
+            resp.data = Json.readValue(entityString, responseType);
+          }
+        }
+        return resp;
+      } finally {
+        // Always consume the response so the connection can be closed safely.
+        EntityUtils.consumeQuietly(response.getEntity());
       }
-      return resp;
     });
   }
 }
