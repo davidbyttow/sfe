@@ -1,7 +1,9 @@
 package io.bold.sfe.web;
 
 import io.bold.sfe.config.BasicServiceConfig;
+import io.bold.sfe.integrations.IntegrationsConfig;
 import io.bold.sfe.service.Env;
+import io.bold.sfe.web.js.InjectedScripts;
 import io.bold.sfe.web.react.ReactBridge;
 import io.bold.sfe.web.webpack.WebpackAssetResolver;
 import com.google.common.base.Charsets;
@@ -118,7 +120,21 @@ public class PageViewRenderer implements ViewRenderer {
   }
 
   protected String getInjectedScripts() {
-    return "";
+    IntegrationsConfig integrations = config.integrations;
+    StringBuilder builder = new StringBuilder();
+
+    if (integrations.googleAnalytics != null) {
+      builder.append(InjectedScripts.forGoogleAnalytics(integrations.googleAnalytics));
+    }
+
+    if (integrations.mixpanel != null) {
+      builder.append(InjectedScripts.forMixpanel(integrations.mixpanel));
+    }
+
+    if (integrations.fullstory != null) {
+      builder.append(InjectedScripts.forFullstory(integrations.fullstory));
+    }
+    return builder.toString();
   }
 
   @Override public String getSuffix() {
