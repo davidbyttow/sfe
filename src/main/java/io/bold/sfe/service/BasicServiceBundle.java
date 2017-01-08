@@ -11,7 +11,6 @@ import io.bold.sfe.config.CommonConfigBundle;
 import io.bold.sfe.environment.aws.AwsEnvBundle;
 import io.bold.sfe.environment.aws.AwsInstanceMetadata;
 import io.bold.sfe.environment.local.LocalEnvBundle;
-import io.bold.sfe.health.ServerStatusBundle;
 import io.bold.sfe.inject.ConfiguredGuiceBundle;
 import io.bold.sfe.inject.GuiceBootstrap;
 import io.bold.sfe.inject.LazySingleton;
@@ -33,7 +32,6 @@ public class BasicServiceBundle<T extends BasicServiceConfig> implements Configu
 
   @Override public void initialize(GuiceBootstrap<?> bootstrap) {
     bootstrap.addModule(new EnvModule());
-    bootstrap.addBundle(new ServerStatusBundle());
 
     bootstrap.addModule(new ProviderOnlyModule() {
       @Provides
