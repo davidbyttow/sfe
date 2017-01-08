@@ -19,7 +19,7 @@ import java.util.Map;
 public class BasicServiceConfig extends Configuration {
 
   @NotNull public Env env;
-  @NotNull public ReplicatedDataSourceFactory database;
+  public ReplicatedDataSourceFactory database;
   public Map<String, String> admins = new HashMap<>();
   public IntegrationsConfig integrations = new IntegrationsConfig();
   public AwsCredentialsConfig aws;
