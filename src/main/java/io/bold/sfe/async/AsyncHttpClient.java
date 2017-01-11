@@ -1,5 +1,6 @@
 package io.bold.sfe.async;
 
+import com.google.common.base.Throwables;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.inject.Inject;
@@ -20,7 +21,15 @@ public class AsyncHttpClient {
     this.executor = executor;
   }
 
-  public ListenableFuture<HttpResponse> executeAsync(HttpUriRequest request) throws IOException {
-    return executor.submit(() -> httpClient.execute(request));
+  public ListenableFuture<HttpResponse> executeAsync(HttpUriRequest request) {
+    return executor.submit(() -> {
+      HttpResponse resp = null;
+      try {
+        resp = httpClient.execute(request);
+        return resp;
+      } catch (IOException e) {
+        throw Throwables.propagate(e);
+      }
+    });
   }
 }

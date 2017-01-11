@@ -72,6 +72,9 @@ public class SlackApiClient {
     post.setHeader("Accept", "application/json");
     ListenableFuture<HttpResponse> future = httpClient.executeAsync(post);
     return Futures.transform(future, (Function<HttpResponse, SlackApiResponse<T>>) response -> {
+      if (response == null) {
+        return null;
+      }
       try {
         if (response.getStatusLine().getStatusCode() != 200) {
           log.error("Couldn't post to Slack, got error code: {}", response.getStatusLine().getStatusCode());
