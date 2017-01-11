@@ -1,7 +1,7 @@
 CREATE TABLE entities(
   kind          VARCHAR(32) NOT NULL,
   id            VARCHAR(64) NOT NULL,
-  json_data     BLOB NOT NULL,
+  json_data     MEDIUMBLOB NOT NULL,
   json_metadata BLOB NOT NULL,
   created_at    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated_at    TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
