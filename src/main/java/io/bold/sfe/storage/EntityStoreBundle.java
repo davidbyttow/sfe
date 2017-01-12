@@ -15,10 +15,12 @@ public final class EntityStoreBundle<T extends BasicServiceConfig> implements Co
 
   private final String entityIndexFile;
   private final Set<String> packagePrefixes;
+  private final boolean skipMigrations;
 
-  public EntityStoreBundle(String entityIndexFile, Set<String> packagePrefixes) {
+  public EntityStoreBundle(String entityIndexFile, Set<String> packagePrefixes, boolean skipMigrations) {
     this.entityIndexFile = entityIndexFile;
     this.packagePrefixes = packagePrefixes;
+    this.skipMigrations = skipMigrations;
   }
 
   @Override public void initialize(GuiceBootstrap<?> bootstrap) {
@@ -26,7 +28,7 @@ public final class EntityStoreBundle<T extends BasicServiceConfig> implements Co
     for (String packagePrefix : packagePrefixes) {
       entityClasses.addAll(MoreReflections.getTypesAnnotatedWith(packagePrefix, EntityKind.class));
     }
-    bootstrap.addModule(new EntityStoreModule(entityIndexFile, entityClasses));
+    bootstrap.addModule(new EntityStoreModule(entityIndexFile, entityClasses, skipMigrations));
   }
 
   @Override public void run(Injector injector, T configuration, Environment environment) throws Exception {
