@@ -32,7 +32,6 @@ public final class StorageBundle<T extends BasicServiceConfig> implements Config
     bootstrap.addModule(new EntityStoreModule(entityClasses));
     bootstrap.addModule(new StorageModule.DbModule<>(EntitiesStorage.class));
     bootstrap.addModule(new StorageModule(storageProviderClasses));
-    bootstrap.addModule(new EntityStoreModule(storageProviderClasses));
   }
 
   @Override public void run(Injector injector, T configuration, Environment environment) throws Exception {
