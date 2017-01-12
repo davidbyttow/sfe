@@ -2,7 +2,6 @@ package com.simplethingsllc.store.common;
 
 import com.simplethingsllc.store.client.EntityStore;
 import com.simplethingsllc.store.client.Query;
-import com.simplethingsllc.store.server.EntityStoreImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,7 +59,7 @@ public final class Queries {
       .build();
   }
 
-  public static <T> int deleteAll(EntityStoreImpl entityStore, Query<T> query) {
+  public static <T> int deleteAll(EntityStore entityStore, Query<T> query) {
     AtomicInteger count = new AtomicInteger(0);
     entityStore.fetch(query).parallelStream().forEach((e) -> {
       entityStore.delete(e);
