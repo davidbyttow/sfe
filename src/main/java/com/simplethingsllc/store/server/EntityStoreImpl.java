@@ -9,7 +9,6 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.SettableFuture;
-import com.google.inject.Inject;
 import com.simplethingsllc.store.client.EntityHandler;
 import com.simplethingsllc.store.client.EntityStore;
 import com.simplethingsllc.store.client.EntityStoreAsync;
@@ -19,8 +18,6 @@ import com.simplethingsllc.store.server.index.CompositeIndexes;
 import com.simplethingsllc.store.server.index.EntityCompositeIndex;
 import io.bold.sfe.common.MutableInt;
 import io.bold.sfe.common.Times;
-import io.bold.sfe.concurrent.BackgroundThreadPool;
-import io.bold.sfe.storage.ForWrites;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,11 +40,11 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
   private final Map<Class<?>, EntityMetadata> metadataMap;
   private final ListeningExecutorService executor;
 
-  @Inject public EntityStoreImpl(@ForWrites EntitiesStorage entitiesStorage,
-                                 SqlExecutor sqlExecutor,
-                                 ObjectMapper objectMapper,
-                                 Map<Class<?>, EntityMetadata> metadataMap,
-                                 @BackgroundThreadPool ListeningExecutorService executor) {
+  public EntityStoreImpl(EntitiesStorage entitiesStorage,
+                         SqlExecutor sqlExecutor,
+                         ObjectMapper objectMapper,
+                         Map<Class<?>, EntityMetadata> metadataMap,
+                         ListeningExecutorService executor) {
     this.entitiesStorage = entitiesStorage;
     this.sqlExecutor = sqlExecutor;
     this.objectMapper = objectMapper;

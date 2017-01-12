@@ -4,7 +4,7 @@ import com.simplethingsllc.store.client.EntityKind;
 import com.simplethingsllc.store.client.EntityStore;
 import com.simplethingsllc.store.client.EntityStoreClient;
 import com.simplethingsllc.store.client.EntityStoreFactory;
-import com.simplethingsllc.store.client.EntityStoreModule;
+import io.bold.sfe.storage.EntityStoreModule;
 import com.simplethingsllc.store.client.config.ClientConfig;
 import io.bold.sfe.common.MoreReflections;
 import io.bold.sfe.json.Json;
