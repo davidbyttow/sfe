@@ -1,4 +1,4 @@
-package com.simplethingsllc.store.server;
+package com.simplethingsllc.store.common;
 
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;

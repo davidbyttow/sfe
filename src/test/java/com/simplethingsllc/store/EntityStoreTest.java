@@ -8,7 +8,7 @@ import com.simplethingsllc.store.client.IdType;
 import com.simplethingsllc.store.client.Ignored;
 import com.simplethingsllc.store.client.Indexed;
 import com.simplethingsllc.store.client.Query;
-import com.simplethingsllc.store.server.PageResults;
+import com.simplethingsllc.store.client.QueryResults;
 import io.bold.sfe.common.Times;
 import io.bold.sfe.testing.EntityStores;
 import io.bold.sfe.testing.MysqlResource;
@@ -544,7 +544,7 @@ public class EntityStoreTest {
     Query<Pod> q = Query.newBuilder(Pod.class)
       .limit(2)
       .build();
-    PageResults<Pod> page = store.fetchPage(q);
+    QueryResults<Pod> page = store.fetchPage(q);
     assertThat(page.getEntities().size() == 2);
     assertThat(page.hasMore()).isTrue();
 

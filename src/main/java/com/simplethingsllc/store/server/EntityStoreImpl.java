@@ -11,8 +11,10 @@ import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.common.util.concurrent.SettableFuture;
 import com.simplethingsllc.store.client.EntityHandler;
 import com.simplethingsllc.store.client.EntityStore;
+import com.simplethingsllc.store.client.EntityStoreAdmin;
 import com.simplethingsllc.store.client.EntityStoreAsync;
 import com.simplethingsllc.store.client.Query;
+import com.simplethingsllc.store.client.QueryResults;
 import com.simplethingsllc.store.server.driver.SqlExecutor;
 import com.simplethingsllc.store.server.index.CompositeIndexes;
 import com.simplethingsllc.store.server.index.EntityCompositeIndex;
@@ -30,7 +32,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
+public class EntityStoreImpl implements EntityStore, EntityStoreAsync, EntityStoreAdmin {
 
   private static final Logger log = LoggerFactory.getLogger(EntityStoreImpl.class);
 
@@ -68,14 +70,23 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
     return Futures.getUnchecked(getManyAsync(ids, type));
   }
 
-  public String getKind(Object entity) {
+  @Override public String getEntityKind(Object entity) {
     EntityMetadata metadata = getMetadata(entity);
     return metadata.getKind();
   }
 
-  public String getId(Object entity) {
+  @Override public String getEntityId(Object entity) {
     EntityMetadata metadata = getMetadata(entity);
     return getId(entity, metadata);
+  }
+
+  @Override public Class<?> getEntityType(Object entity) {
+    EntityMetadata metadata = getMetadata(entity);
+    return metadata.getType();
+  }
+
+  @Override public Class<?> getKindType(String kind) {
+    return getMetadata(kind).getType();
   }
 
   @Override public ListenableFuture<Void> putAsync(Object entity) {
@@ -179,15 +190,6 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
     });
   }
 
-  public Class<?> findEntityType(String kind) {
-    for (Map.Entry<Class<?>, EntityMetadata> entry : metadataMap.entrySet()) {
-      if (entry.getValue().getKind().equals(kind)) {
-        return entry.getKey();
-      }
-    }
-    return null;
-  }
-
   private ListenableFuture<Void> waitForAll(ListenableFuture<List<Void>> list) {
     SettableFuture<Void> settable = SettableFuture.create();
     list.addListener(() -> settable.set(null), executor);
@@ -196,7 +198,7 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
 
   // TODO(d): Remove this. It's here because the frontend can't inject the map itself in a handler
   // for some odd reason.
-  public ImmutableMap<Class<?>, EntityMetadata> getEntityMetadataMap() {
+  @Override public Map<Class<?>, EntityMetadata> getEntityMetadataMap() {
     return ImmutableMap.copyOf(metadataMap);
   }
 
@@ -207,6 +209,15 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
       throw new IllegalArgumentException("No metadata found for object " + entity);
     }
     return metadata;
+  }
+
+  private EntityMetadata getMetadata(String kind) {
+    for (Map.Entry<Class<?>, EntityMetadata> entry : metadataMap.entrySet()) {
+      if (entry.getValue().getKind().equals(kind)) {
+        return entry.getValue();
+      }
+    }
+    throw new IllegalArgumentException("No metadata found for kind " + kind);
   }
 
   private String getId(Object entity, EntityMetadata metadata) {
@@ -269,8 +280,8 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
     }
   }
 
-  public int backfillKind(Class<?> type) {
-    EntityMetadata metadata = metadataMap.get(type);
+  @Override public int backfillIndexForKind(String kind) {
+    EntityMetadata metadata = getMetadata(kind);
     if (metadata == null) {
       return 0;
     }
@@ -342,7 +353,7 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
     return entities;
   }
 
-  @Override public <T> PageResults<T> fetchPage(Query<T> query) {
+  @Override public <T> QueryResults<T> fetchPage(Query<T> query) {
     List<T> entities = new ArrayList<>();
     PageResults<T> page = new PageResults<>(query);
     page.endCursor = "";
@@ -350,7 +361,8 @@ public class EntityStoreImpl implements EntityStore, EntityStoreAsync {
   }
 
   // TODO(d): This API sucks but figure it out later.
-  @Override public <T> PageResults<T> fetchNext(PageResults<T> page) {
+  @Override public <T> QueryResults<T> fetchNext(QueryResults<T> prev) {
+    PageResults<T> page = (PageResults<T>) prev;
     EntityMetadata metadata = fromType(page.query.getType());
     List<Query.Filter> filters = page.query.getFilters();
     Query.Ordering ordering = page.query.getOrdering();

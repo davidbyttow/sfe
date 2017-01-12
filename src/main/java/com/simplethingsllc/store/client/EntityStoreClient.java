@@ -6,10 +6,12 @@ public class EntityStoreClient {
 
   private final EntityStore store;
   private final EntityStoreAsync asyncStore;
+  private final EntityStoreAdmin admin;
 
   EntityStoreClient(EntityStoreImpl store) {
     this.store = store;
     this.asyncStore = store;
+    this.admin = store;
   }
 
   public EntityStore getStore() {
@@ -18,5 +20,9 @@ public class EntityStoreClient {
 
   public EntityStoreAsync getAsyncStore() {
     return asyncStore;
+  }
+
+  public EntityStoreAdmin getAdmin() {
+    return admin;
   }
 }

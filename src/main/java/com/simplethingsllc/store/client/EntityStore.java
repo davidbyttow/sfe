@@ -1,7 +1,5 @@
 package com.simplethingsllc.store.client;
 
-import com.simplethingsllc.store.server.PageResults;
-
 import java.util.List;
 
 public interface EntityStore {
@@ -23,7 +21,7 @@ public interface EntityStore {
 
   <T> List<T> fetch(Query<T> query);
 
-  <T> PageResults<T> fetchPage(Query<T> query);
+  <T> QueryResults<T> fetchPage(Query<T> query);
 
-  <T> PageResults<T> fetchNext(PageResults<T> page);
+  <T> QueryResults<T> fetchNext(QueryResults<T> page);
 }

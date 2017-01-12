@@ -1,5 +1,6 @@
 package com.simplethingsllc.store.common;
 
+import com.simplethingsllc.store.client.EntityStore;
 import com.simplethingsllc.store.client.Query;
 import com.simplethingsllc.store.server.EntityStoreImpl;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
+// TODO(d): Kill this class.
 public final class Queries {
   private static final Logger log = LoggerFactory.getLogger(Queries.class);
 
@@ -15,7 +17,7 @@ public final class Queries {
     return Query.newBuilder(type).limit(limit).build();
   }
 
-  public static <T> T fetchOnly(EntityStoreImpl entityStore, Query<T> query) {
+  public static <T> T fetchOnly(EntityStore entityStore, Query<T> query) {
     List<T> found = entityStore.fetch(query);
     if (found.isEmpty()) {
       return null;
@@ -30,7 +32,7 @@ public final class Queries {
   }
 
   // TODO(d): Reconcile this with fetchOnly
-  public static <T> T fetchBySecondaryId(EntityStoreImpl entityStore, String name, String value, Class<T> type) {
+  public static <T> T fetchBySecondaryId(EntityStore entityStore, String name, String value, Class<T> type) {
     List<T> found = fetchAllBySecondaryId(entityStore, name, value, type);
     if (found.isEmpty()) {
       return null;
@@ -44,7 +46,7 @@ public final class Queries {
     return found.get(0);
   }
 
-  public static <T> List<T> fetchAllBySecondaryId(EntityStoreImpl entityStore, String name, String value, Class<T> type) {
+  public static <T> List<T> fetchAllBySecondaryId(EntityStore entityStore, String name, String value, Class<T> type) {
     Query<T> query = Query.newBuilder(type)
       .addFilter(name, Query.Equality.Equals, value)
       .build();

@@ -2,11 +2,12 @@ package com.simplethingsllc.store.server;
 
 import com.google.common.base.Strings;
 import com.simplethingsllc.store.client.Query;
+import com.simplethingsllc.store.client.QueryResults;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageResults<T> {
+class PageResults<T> implements QueryResults<T> {
 
   final Query<T> query;
   final List<T> entities = new ArrayList<>();
@@ -16,15 +17,15 @@ public class PageResults<T> {
     this.query = query;
   }
 
-  public List<T> getEntities() {
+  @Override public List<T> getEntities() {
     return entities;
   }
 
-  public boolean hasMore() {
+  @Override public boolean hasMore() {
     return hasCursor();
   }
 
-  public boolean hasCursor() {
+  boolean hasCursor() {
     return !Strings.isNullOrEmpty(endCursor);
   }
 }
