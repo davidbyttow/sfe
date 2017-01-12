@@ -2,6 +2,7 @@ package io.bold.sfe.storage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.base.Charsets;
+import com.google.common.base.Strings;
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
@@ -11,8 +12,8 @@ import com.simplethingsllc.store.client.EntityStoreClient;
 import com.simplethingsllc.store.client.EntityStoreFactory;
 import com.simplethingsllc.store.client.config.ClientConfig;
 import com.simplethingsllc.store.client.config.CompositeIndexDef;
-import com.simplethingsllc.store.server.EntitiesStorage;
 import io.bold.sfe.concurrent.BackgroundThreadPool;
+import io.bold.sfe.config.BasicServiceConfig;
 import io.bold.sfe.environment.ClassLoaders;
 import io.bold.sfe.inject.LazySingleton;
 import io.bold.sfe.json.Json;
@@ -28,23 +29,19 @@ import java.util.Set;
 
 public final class EntityStoreModule extends AbstractModule {
 
-  private final String indexFilePath;
   private final Set<Class<?>> entityClasses;
-  private final boolean skipMigrations;
 
-  public EntityStoreModule(String indexFilePath, Set<Class<?>> entityClasses, boolean skipMigrations) {
-    this.indexFilePath = indexFilePath;
+  EntityStoreModule(Set<Class<?>> entityClasses) {
     this.entityClasses = entityClasses;
-    this.skipMigrations = skipMigrations;
   }
 
   @Override protected void configure() {
-    install(new StorageModule.DbModule<>(EntitiesStorage.class));
   }
 
   @Provides
   @LazySingleton
-  EntityStoreClient client(@ForWrites DataSource dataSource,
+  EntityStoreClient client(BasicServiceConfig config,
+                           @ForWrites DataSource dataSource,
                            @ForWrites DBI dbi,
                            ObjectMapper objectMapper,
                            @BackgroundThreadPool ListeningExecutorService executorService) throws IOException {
@@ -54,8 +51,10 @@ public final class EntityStoreModule extends AbstractModule {
     clientConfig.executorService = executorService;
     clientConfig.objectMapper = objectMapper;
     clientConfig.entityTypes = entityClasses;
-    clientConfig.indexes = EntityStoreModule.loadIndexesFromJson(indexFilePath);
-    clientConfig.skipMigrations = skipMigrations;
+    if (!Strings.isNullOrEmpty(config.storage.indexFilePath)) {
+      clientConfig.indexes = EntityStoreModule.loadIndexesFromJson(config.storage.indexFilePath);
+    }
+    clientConfig.skipMigrations = config.storage.skipMigrations;
     return EntityStoreFactory.createClient(clientConfig);
   }
 
@@ -67,7 +66,7 @@ public final class EntityStoreModule extends AbstractModule {
     return client.getAsyncStore();
   }
 
-  public static class IndexesDef {
+  static class IndexesDef {
     List<CompositeIndexDef> indexes = new ArrayList<>();
   }
 

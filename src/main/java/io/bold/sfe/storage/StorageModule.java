@@ -15,11 +15,9 @@ import java.util.Set;
 
 public final class StorageModule extends AbstractModule {
 
-  private final String databaseName;
   private final Set<Class<?>> storageProviderClasses;
 
-  public StorageModule(String databaseName, Set<Class<?>> storageProviderClasses) {
-    this.databaseName = databaseName;
+  public StorageModule(Set<Class<?>> storageProviderClasses) {
     this.storageProviderClasses = storageProviderClasses;
   }
 
@@ -72,8 +70,8 @@ public final class StorageModule extends AbstractModule {
 
   @Provides @LazySingleton DataSourceManager provideDataSourceManager(
       Environment env, BasicServiceConfig config, MetricRegistry metrics) {
-    DataSourceManager dm = new DataSourceManager(env, config, metrics);
-    dm.init(databaseName);
+    DataSourceManager dm = new DataSourceManager(env, config.storage, metrics);
+    dm.init();
     return dm;
   }
 

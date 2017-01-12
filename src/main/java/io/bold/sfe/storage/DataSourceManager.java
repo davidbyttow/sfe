@@ -1,7 +1,6 @@
 package io.bold.sfe.storage;
 
 import com.codahale.metrics.MetricRegistry;
-import io.bold.sfe.config.BasicServiceConfig;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
@@ -11,7 +10,7 @@ import javax.sql.DataSource;
 public class DataSourceManager {
 
   private final Environment env;
-  private final BasicServiceConfig config;
+  private final StorageConfig config;
   private final MetricRegistry metrics;
 
   private DataSource dataSource;
@@ -19,17 +18,17 @@ public class DataSourceManager {
   private DBIReplicaSet replicaSet;
   private String databaseName;
 
-  DataSourceManager(Environment env, BasicServiceConfig config, MetricRegistry metrics) {
+  DataSourceManager(Environment env, StorageConfig config, MetricRegistry metrics) {
     this.env = env;
     this.config = config;
     this.metrics = metrics;
   }
 
-  void init(String databaseName) {
+  void init() {
     if (this.databaseName != null) {
       throw new IllegalStateException("Datasource already initialized, did you want to reload?");
     }
-    this.databaseName = databaseName;
+    this.databaseName = config.databaseName;
     setupConnections();
   }
 
