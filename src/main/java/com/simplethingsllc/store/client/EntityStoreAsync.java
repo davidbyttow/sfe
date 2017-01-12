@@ -4,7 +4,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.List;
 
-public interface EntityStoreAsync {
+public interface EntityStoreAsync extends EntityStore {
   ListenableFuture<Void> putAsync(Object entity);
 
   ListenableFuture<Void> putManyAsync(List<?> entities);
