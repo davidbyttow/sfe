@@ -5,7 +5,7 @@ import com.fasterxml.jackson.core.json.PackageVersion;
 import com.fasterxml.jackson.databind.AnnotationIntrospector;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.introspect.AnnotatedMember;
-import io.bold.sfe.storage.entity.Ignored;
+import com.simplethingsllc.store.client.Ignored;
 
 public class IgnoredPropertiesModule extends Module {
   @Override public String getModuleName() {

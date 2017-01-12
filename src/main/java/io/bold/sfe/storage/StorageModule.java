@@ -7,7 +7,7 @@ import com.google.inject.Provider;
 import com.google.inject.Provides;
 import io.bold.sfe.config.BasicServiceConfig;
 import io.bold.sfe.inject.LazySingleton;
-import io.bold.sfe.storage.entity.EntitiesStorage;
+import com.simplethingsllc.store.server.EntitiesStorage;
 import io.dropwizard.setup.Environment;
 import org.skife.jdbi.v2.DBI;
 

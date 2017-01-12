@@ -6,9 +6,9 @@ import io.bold.sfe.common.MoreReflections;
 import io.bold.sfe.config.BasicServiceConfig;
 import io.bold.sfe.inject.ConfiguredGuiceBundle;
 import io.bold.sfe.inject.GuiceBootstrap;
-import io.bold.sfe.storage.entity.EntityKind;
-import io.bold.sfe.storage.entity.EntityMetadataService;
-import io.bold.sfe.storage.entity.EntityStoreModule;
+import com.simplethingsllc.store.client.EntityKind;
+import com.simplethingsllc.store.server.EntityMetadataService;
+import com.simplethingsllc.store.client.EntityStoreModule;
 import io.dropwizard.setup.Environment;
 
 import java.util.HashSet;

@@ -2,7 +2,7 @@ package io.bold.sfe.storage;
 
 import com.google.common.base.Throwables;
 import io.bold.sfe.json.Json;
-import io.bold.sfe.storage.entity.Jsons;
+import com.simplethingsllc.store.common.Jsons;
 
 public abstract class JsonEntry<T> {
   private byte[] jsonData = Jsons.defaultValue();
