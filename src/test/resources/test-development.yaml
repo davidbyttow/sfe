@@ -1,0 +1,11 @@
+env: development
+
+server:
+  requestLog:
+    appenders:
+      - type: file
+        archivedLogFilenamePattern: /dev/null/access.%d.log.gz
+  applicationConnectors:
+    - { type: http, port: 8080 }
+  adminConnectors:
+    - { type: http, port: 8081 }
