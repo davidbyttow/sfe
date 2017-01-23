@@ -1,14 +1,15 @@
-package com.simplethingsllc.store.server;
+package com.simplethingsllc.store.server.index;
 
 import com.google.inject.Inject;
+import com.simplethingsllc.store.server.EntityMetadata;
 import com.simplethingsllc.store.server.driver.SqlExecutor;
 
 public class EntityPropertiesGenerator {
 
   private static final String PROPERTIES_TABLE_FORMAT =
       "CREATE TABLE %s_properties(\n" +
-          "  entity_id       VARCHAR(64) NOT NULL,\n" +
-          "  prop_key        VARCHAR(32) NOT NULL,\n" +
+          "  entity_id       VARCHAR(128) NOT NULL,\n" +
+          "  prop_key        VARCHAR(128) NOT NULL,\n" +
           "  updated_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
           "  prop_bool       TINYINT(1),\n" +
           "  prop_int        INTEGER,\n" +

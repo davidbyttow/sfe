@@ -10,7 +10,7 @@ import com.simplethingsllc.store.client.config.CompositeIndexDef;
 import com.simplethingsllc.store.server.EntitiesStorage;
 import com.simplethingsllc.store.server.EntityMetadata;
 import com.simplethingsllc.store.server.EntityMetadataService;
-import com.simplethingsllc.store.server.EntityPropertiesGenerator;
+import com.simplethingsllc.store.server.index.EntityPropertiesGenerator;
 import com.simplethingsllc.store.server.EntityStoreImpl;
 import com.simplethingsllc.store.server.MetadataManager;
 import com.simplethingsllc.store.server.driver.SqlExecutor;

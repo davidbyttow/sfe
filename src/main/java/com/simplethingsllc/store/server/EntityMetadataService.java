@@ -1,6 +1,7 @@
 package com.simplethingsllc.store.server;
 
 import com.google.inject.Inject;
+import com.simplethingsllc.store.server.index.EntityPropertiesGenerator;
 import com.simplethingsllc.store.server.index.IndexGenerator;
 
 import java.util.Map;
