@@ -11,6 +11,7 @@ plugins {
   id 'java'
   id 'idea'
   id 'junit-test-suite'
+  id 'nebula.provided-base' version '3.0.3'
 }
 
 repositories {
@@ -25,6 +26,8 @@ configurations {
 }
 
 dependencies {
+  provided 'com.google.dagger:dagger-compiler:2.8'
+
   compile 'com.amazonaws:aws-java-sdk-s3:1.11.29'
   compile 'com.amazonaws:aws-java-sdk-ses:1.11.29'
   compile 'com.fasterxml.jackson.datatype:jackson-datatype-json-org:2.8.1'
@@ -37,7 +40,6 @@ dependencies {
   compile 'com.google.inject.extensions:guice-multibindings:4.1.0'
   compile 'com.google.inject.extensions:guice-servlet:4.1.0'
   compile 'com.google.dagger:dagger:2.8'
-  //compile 'com.google.dagger:dagger-compiler:2.0'
   compile 'com.google.guava:guava:19.0'
   compile 'com.googlecode.java-diff-utils:diffutils:1.3.0'
   compile 'com.hubspot.dropwizard:dropwizard-guice:1.0.0'

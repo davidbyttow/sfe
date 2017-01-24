@@ -4,7 +4,7 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ApplicationModule {
+public class AppModule {
   @Provides static TestDaggerServer provideServer() {
     return new TestDaggerServer();
   }
