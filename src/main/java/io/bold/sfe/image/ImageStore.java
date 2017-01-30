@@ -14,4 +14,6 @@ public interface ImageStore {
   void put(String bucket, String key, String contentType, InputStream input, int contentLength);
 
   Result get(String key);
+
+  Result get(String bucket, String key);
 }

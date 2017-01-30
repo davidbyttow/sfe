@@ -37,14 +37,18 @@ public class S3ImageStore implements ImageStore {
     metadata.setContentType(contentType);
     metadata.setContentLength(contentLength);
 
-    PutObjectRequest put = new PutObjectRequest(BUCKET_NAME, key, input, metadata)
+    PutObjectRequest put = new PutObjectRequest(bucket, key, input, metadata)
       .withCannedAcl(CannedAccessControlList.PublicRead);
 
     client.putObject(put);
   }
 
   @Override public Result get(String key) {
-    GetObjectRequest get = new GetObjectRequest(BUCKET_NAME, key);
+    return get(BUCKET_NAME, key);
+  }
+
+  @Override public Result get(String bucket, String key) {
+    GetObjectRequest get = new GetObjectRequest(bucket, key);
     S3Object object = client.getObject(get);
     if (object == null) {
       return null;
