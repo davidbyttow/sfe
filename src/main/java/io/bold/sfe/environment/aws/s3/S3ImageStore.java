@@ -26,6 +26,10 @@ public class S3ImageStore implements ImageStore {
   }
 
   @Override public void put(String key, String contentType, InputStream input, int contentLength) {
+    put(BUCKET_NAME, key, contentType, input, contentLength);
+  }
+
+  @Override public void put(String bucket, String key, String contentType, InputStream input, int contentLength) {
     Preconditions.checkArgument(!key.startsWith("/"));
     Preconditions.checkArgument(ALLOWED_CONTENT_TYPES.contains(contentType));
 
