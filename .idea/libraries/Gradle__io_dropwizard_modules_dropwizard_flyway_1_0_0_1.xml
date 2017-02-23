@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.dropwizard.modules:dropwizard-flyway:1.0.0-1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.dropwizard.modules/dropwizard-flyway/1.0.0-1/3dd76629b997e233dfc91802e0e18badf493f3c9/dropwizard-flyway-1.0.0-1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.dropwizard.modules/dropwizard-flyway/1.0.0-1/60481dd3a5827c57bc94502abec7124b352df8db/dropwizard-flyway-1.0.0-1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

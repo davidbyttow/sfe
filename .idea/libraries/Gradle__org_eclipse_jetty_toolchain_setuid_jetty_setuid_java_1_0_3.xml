@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.eclipse.jetty.toolchain.setuid:jetty-setuid-java:1.0.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.toolchain.setuid/jetty-setuid-java/1.0.3/73ae4ab171d396103f32e392970641e985d1a845/jetty-setuid-java-1.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.eclipse.jetty.toolchain.setuid/jetty-setuid-java/1.0.3/c2ede016dae2ea24c64fcc2f58d12b1b83088557/jetty-setuid-java-1.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

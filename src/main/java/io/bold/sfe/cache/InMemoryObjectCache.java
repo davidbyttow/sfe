@@ -8,7 +8,7 @@ import javax.annotation.Nullable;
 import java.util.concurrent.TimeUnit;
 
 @Singleton
-public class InMemoryObjectCache implements ObjectCache {
+public class InMemoryObjectCache implements AssociativeCache {
 
   private final Cache<String, Object> cache = CacheBuilder.newBuilder()
       .expireAfterWrite(1, TimeUnit.DAYS)

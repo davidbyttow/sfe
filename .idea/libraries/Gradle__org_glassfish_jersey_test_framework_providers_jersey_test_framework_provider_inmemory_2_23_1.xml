@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.glassfish.jersey.test-framework.providers:jersey-test-framework-provider-inmemory:2.23.1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.test-framework.providers/jersey-test-framework-provider-inmemory/2.23.1/40989925a70d2704eb4d2b6260ff066330cb3c8c/jersey-test-framework-provider-inmemory-2.23.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.glassfish.jersey.test-framework.providers/jersey-test-framework-provider-inmemory/2.23.1/74a6ca5c49d1ace12b1f4c0640d8ccfe8057ebfd/jersey-test-framework-provider-inmemory-2.23.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jdbi:jdbi:2.73">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jdbi/jdbi/2.73/bbf2e30f4034cc1ab16c6d224e528a3d6f6ae9a3/jdbi-2.73.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jdbi/jdbi/2.73/7dbbb34c0f236e855b631bbc92c3d8247c9e311f/jdbi-2.73-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
