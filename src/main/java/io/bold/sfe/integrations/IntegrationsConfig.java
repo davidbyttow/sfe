@@ -1,5 +1,6 @@
 package io.bold.sfe.integrations;
 
+import com.simplethingsllc.integrations.twilio.TwilioConfig;
 import io.bold.sfe.integrations.algolia.AlgoliaConfig;
 import io.bold.sfe.integrations.cm.CampaignMonitorConfig;
 import io.bold.sfe.integrations.embedly.EmbedlyConfig;
@@ -24,4 +25,5 @@ public class IntegrationsConfig {
   public FullstoryConfig fullstory;
   public StripeConfig stripe;
   public TwitterAuthConfig twitter;
+  public TwilioConfig twilio;
 }

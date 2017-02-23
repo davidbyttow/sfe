@@ -45,6 +45,7 @@ dependencies {
   compile 'com.hubspot.dropwizard:dropwizard-guice:1.0.0'
   compile 'com.mikesamuel:json-sanitizer:1.1'
   compile 'com.stripe:stripe-java:2.10.0'
+  compile 'com.twilio.sdk:twilio:7.4.0'
   compile 'commons-io:commons-io:2.5'
   compile 'io.dropwizard:dropwizard-auth:1.0.0'
   compile 'io.dropwizard:dropwizard-client:1.0.0'

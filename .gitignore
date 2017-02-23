@@ -2,5 +2,6 @@
 build/
 *.iml
 .gradle/*
+.idea
 classes/
 out/
