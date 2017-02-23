@@ -1,4 +1,4 @@
-package com.simplethingsllc.integrations.twilio;
+package com.simplethingsllc.framework.integrations.twilio;
 
 import org.hibernate.validator.constraints.NotEmpty;
 

@@ -1,6 +1,6 @@
 package io.bold.sfe.integrations;
 
-import com.simplethingsllc.integrations.twilio.TwilioConfig;
+import com.simplethingsllc.framework.integrations.twilio.TwilioConfig;
 import io.bold.sfe.integrations.algolia.AlgoliaConfig;
 import io.bold.sfe.integrations.cm.CampaignMonitorConfig;
 import io.bold.sfe.integrations.embedly.EmbedlyConfig;

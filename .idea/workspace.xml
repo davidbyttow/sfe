@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="101ffef9-98d2-4924-877a-6e5adb86f72c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/SmsSender.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/TwilioConfig.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/SmsSender.java" afterPath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/integrations/twilio/SmsSender.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/TwilioConfig.java" afterPath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/integrations/twilio/TwilioConfig.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/jersey/dagger2/DaggerApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/jersey/dagger2/DaggerApplication.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/jersey/dagger2/DaggerFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/jersey/dagger2/DaggerFilter.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/jersey/dagger2/RequestModule.java" afterPath="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/jersey/dagger2/RequestModule.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/integrations/IntegrationsConfig.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/integrations/IntegrationsConfig.java" />
     </list>
     <ignored path="sfe.iws" />
@@ -94,10 +95,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="SmsSender.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/SmsSender.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/integrations/twilio/SmsSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+            <state relative-caret-position="476">
+              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -134,7 +135,7 @@
         </entry>
       </file>
       <file leaf-file-name="TwilioConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/TwilioConfig.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/integrations/twilio/TwilioConfig.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
               <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
@@ -467,8 +468,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/server/PageResults.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/EntityStoreFactory.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/EntityStoreClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/server/EntityStoreImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/EntityStoreAdmin.java" />
@@ -518,6 +517,8 @@
         <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/integrations/IntegrationsConfig.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/SmsSender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/twilio/SmsSender.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/integrations/twilio/SmsSender.java" />
       </list>
     </option>
   </component>
@@ -735,8 +736,34 @@
               <option name="myItemId" value="simplethingsllc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
+              <option name="myItemId" value="sfe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sfe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="simplethingsllc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -766,101 +793,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simplethingsllc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="store" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="cache" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simplethingsllc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sfe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="simplethingsllc" />
+              <option name="myItemId" value="framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -1507,7 +1440,7 @@
       <workItem from="1487458837368" duration="121000" />
       <workItem from="1487458970216" duration="1113000" />
       <workItem from="1487460770015" duration="8000" />
-      <workItem from="1487831140321" duration="1840000" />
+      <workItem from="1487831140321" duration="1988000" />
     </task>
     <servers />
   </component>
@@ -1544,7 +1477,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63621000" />
+    <option name="totallyTimeSpent" value="63769000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="104" y="160" width="1559" height="1280" extended-state="0" />
@@ -1625,14 +1558,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/io/bold/sfe/server/dagger/ApplicationModule.java" />
     <entry file="file://$PROJECT_DIR$/src/test/java/io/bold/sfe/server/dagger/Server.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/jersey/dagger2/RequestModule.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/jersey/dagger2/RequestModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/jersey/dagger2/DaggerApplication.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/jersey/dagger2/DaggerApplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
@@ -1978,7 +1911,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/TwilioConfig.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/integrations/twilio/TwilioConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
@@ -1986,10 +1919,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/integrations/twilio/SmsSender.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/integrations/twilio/SmsSender.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="17" lean-forward="true" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+        <state relative-caret-position="476">
+          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding />
         </state>
       </provider>

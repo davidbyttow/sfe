@@ -1,4 +1,4 @@
-package com.simplethingsllc.integrations.twilio;
+package com.simplethingsllc.framework.integrations.twilio;
 
 import com.google.common.util.concurrent.ListeningExecutorService;
 import com.twilio.Twilio;

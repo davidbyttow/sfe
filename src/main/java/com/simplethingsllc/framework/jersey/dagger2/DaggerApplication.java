@@ -1,4 +1,4 @@
-package com.simplethingsllc.jersey.dagger2;
+package com.simplethingsllc.framework.jersey.dagger2;
 
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;
