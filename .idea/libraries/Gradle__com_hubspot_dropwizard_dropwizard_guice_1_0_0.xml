@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.hubspot.dropwizard:dropwizard-guice:1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hubspot.dropwizard/dropwizard-guice/1.0.0/7fdf2300df7eec8ae6d6eac74a85d7a0e2201498/dropwizard-guice-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.hubspot.dropwizard/dropwizard-guice/1.0.0/235cb99bd57e15635ba6e584f2e86ce36881352a/dropwizard-guice-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

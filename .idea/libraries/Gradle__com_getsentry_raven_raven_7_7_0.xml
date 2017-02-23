@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.getsentry.raven:raven:7.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.getsentry.raven/raven/7.7.0/86b4ef0e98905032ccd616468740cc7229457fc9/raven-7.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.getsentry.raven/raven/7.7.0/f33b00ac0279fc9cf4762c70ae7330c1f011bcbf/raven-7.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

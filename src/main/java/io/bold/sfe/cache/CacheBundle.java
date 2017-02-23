@@ -12,7 +12,7 @@ public final class CacheBundle<T extends BasicServiceConfig> implements Configur
   @Override public void initialize(GuiceBootstrap<?> bootstrap) {
     bootstrap.addModule(new AbstractModule() {
       @Override protected void configure() {
-        bind(ObjectCache.class).to(InMemoryObjectCache.class);
+        bind(AssociativeCache.class).to(InMemoryObjectCache.class);
       }
     });
   }

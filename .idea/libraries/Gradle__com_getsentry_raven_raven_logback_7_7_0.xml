@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.getsentry.raven:raven-logback:7.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.getsentry.raven/raven-logback/7.7.0/f28d48de580148c2052ba0c3c40bd9b7ea6d5429/raven-logback-7.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.getsentry.raven/raven-logback/7.7.0/c5b90d705c3cc58844c4dc3a66bec6cc813ea4eb/raven-logback-7.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

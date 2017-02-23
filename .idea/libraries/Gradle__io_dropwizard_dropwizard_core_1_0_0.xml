@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: io.dropwizard:dropwizard-core:1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.dropwizard/dropwizard-core/1.0.0/7a57ea6f91cd22ba02b8973c1a4e0f9f4caebd53/dropwizard-core-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.dropwizard/dropwizard-core/1.0.0/7acfd55f07f17f979cb1d56287d7d68b210d048c/dropwizard-core-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
