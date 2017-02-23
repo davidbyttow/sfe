@@ -1,6 +1,8 @@
 package io.bold.sfe.cache;
 
 import com.google.common.cache.Cache;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
 
 import javax.annotation.Nullable;
 
@@ -11,7 +13,11 @@ public class InMemoryLoadingCache<K, V> implements LoadingCache<K, V> {
   }
 
   public static <K, V> InMemoryLoadingCache<K, V> create(Cache<K, V> cache, CacheLoader<K, V> loader) {
-    return new InMemoryLoadingCache<>(cache, loader);
+    return new InMemoryLoadingCache<>(cache, new AbstractCacheLoader<K, V>() {
+      @Override public ListenableFuture<V> loadAsync(K key) {
+        return Futures.immediateFuture(loader.load(key));
+      }
+    });
   }
 
   private final Cache<K, V> cache;
@@ -28,6 +34,10 @@ public class InMemoryLoadingCache<K, V> implements LoadingCache<K, V> {
 
   @Override public V get(K key, CacheLoader<K, V> loader) {
     return getAndLoad(key, loader);
+  }
+
+  @Override public ListenableFuture<V> getAsync(K key, AsyncCacheLoader<K, V> loader) {
+    return loader.loadAsync(key);
   }
 
   @Override public void put(K key, V object) {

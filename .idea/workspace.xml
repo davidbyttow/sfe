@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="101ffef9-98d2-4924-877a-6e5adb86f72c" name="Default" comment="" />
+    <list default="true" id="101ffef9-98d2-4924-877a-6e5adb86f72c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/CacheLoaders.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/CacheLoaders.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryLoadingCache.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryLoadingCache.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/LoadingCache.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/LoadingCache.java" />
+    </list>
     <ignored path="sfe.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -409,9 +413,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/test/java/io/bold/sfe/server/GuiceTestResource.java" />
-        <option value="$PROJECT_DIR$/src/test/java/io/bold/sfe/server/TestModule.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/inject/DropwizardEnvironmentModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/inject/GuiceApplication.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/common/MoreReflections.java" />
         <option value="$PROJECT_DIR$/src/test/java/io/bold/sfe/server/TestObject.java" />
@@ -436,10 +437,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/cache/CacheLoaders.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/cache/AbstractEntityCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/cache/Caches.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/CacheLoaders.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/SimpleCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryLoadingCache.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/LoadingCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/Caches.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/cache/ObjectCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/cache/EntityCache.java" />
@@ -460,6 +458,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/http/error/UnauthorizedException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/http/annotation/Interceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/simplethingsllc/framework/http/annotation/Rpc.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/AsyncCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/AsyncCacheLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/CacheLoaders.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/LoadingCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/AbstractCacheLoader.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryLoadingCache.java" />
       </list>
     </option>
   </component>
@@ -649,6 +653,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="sfe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sfe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sfe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sfe" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cache" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1347,7 +1381,7 @@
       <workItem from="1487458837368" duration="121000" />
       <workItem from="1487458970216" duration="1113000" />
       <workItem from="1487460770015" duration="8000" />
-      <workItem from="1487831140321" duration="2414000" />
+      <workItem from="1487831140321" duration="2832000" />
     </task>
     <servers />
   </component>
@@ -1384,7 +1418,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64195000" />
+    <option name="totallyTimeSpent" value="64613000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="104" y="160" width="1559" height="1280" extended-state="0" />
@@ -1413,7 +1447,7 @@
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19948685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827005" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2873637" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2873637" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1449,27 +1483,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/server/EntityFields.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/server/MetadataManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="36" column="0" lean-forward="true" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/simplethingsllc/store/client/EntityStore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jdbi/jdbi/2.73/7dbbb34c0f236e855b631bbc92c3d8247c9e311f/jdbi-2.73-sources.jar!/org/skife/jdbi/v2/DBI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -1597,33 +1610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/CacheLoaders.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/LoadingCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryLoadingCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="e#746#747#0" expanded="false" />
-            <element signature="e#793#794#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/Caches.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1636,14 +1622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryObjectCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -1852,6 +1830,65 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryLoadingCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding>
+            <element signature="e#1253#1254#0" expanded="true" />
+            <element signature="e#1291#1292#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/InMemoryObjectCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="52" lean-forward="false" selection-start-line="10" selection-start-column="52" selection-end-line="10" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/AbstractCacheLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/LoadingCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/CacheLoaders.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/AsyncCacheLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/bold/sfe/cache/AsyncCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
         </state>
       </provider>
