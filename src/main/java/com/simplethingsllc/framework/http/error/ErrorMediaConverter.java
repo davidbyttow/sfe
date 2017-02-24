@@ -1,7 +1,6 @@
 package com.simplethingsllc.framework.http.error;
 
 import com.google.common.base.Strings;
-import io.bold.sfe.web.PageViewRenderer;
 import org.glassfish.jersey.server.ContainerRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,12 +14,9 @@ class ErrorMediaConverter {
   private static final Logger log = LoggerFactory.getLogger(ErrorMediaConverter.class);
 
   private final Provider<ContainerRequest> containerRequestProvider;
-  private final PageViewRenderer pageViewRenderer;
 
-  @Inject ErrorMediaConverter(Provider<ContainerRequest> containerRequestProvider,
-                              PageViewRenderer pageViewRenderer) {
+  @Inject ErrorMediaConverter(Provider<ContainerRequest> containerRequestProvider) {
     this.containerRequestProvider = containerRequestProvider;
-    this.pageViewRenderer = pageViewRenderer;
   }
 
   Response convert(ErrorDetails errorDetails) {
