@@ -2,7 +2,6 @@ package io.bold.sfe.common;
 
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
-import com.google.common.base.Throwables;
 import com.google.common.io.ByteStreams;
 
 import java.io.IOException;
@@ -28,7 +27,7 @@ public class MoreStrings {
     try {
       return fromUtf8(ByteStreams.toByteArray(is));
     } catch (IOException e) {
-      throw Throwables.propagate(e);
+      throw new RuntimeException(e);
     }
   }
 

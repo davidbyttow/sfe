@@ -1,6 +1,6 @@
 package io.bold.sfe.environment.aws;
 
-import com.google.common.base.Throwables;
+import com.google.common.base.Preconditions;
 import io.bold.sfe.common.MoreStrings;
 import io.bold.sfe.service.InstanceHostProvider;
 import io.bold.sfe.service.InstanceMetadata;
@@ -10,8 +10,6 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.net.URI;
-
-import static com.google.common.base.Preconditions.checkState;
 
 /**
  * @author d
@@ -54,11 +52,11 @@ public class AwsInstanceMetadata implements InstanceMetadata {
     try {
       HttpGet get = new HttpGet(URI.create(BASE_URI + attributeName));
       HttpResponse response = http.execute(get);
-      checkState(response.getStatusLine().getStatusCode() == 200, "Error retrieving metadata from %s: %s",
+      Preconditions.checkState(response.getStatusLine().getStatusCode() == 200, "Error retrieving metadata from %s: %s",
           attributeName, response.getStatusLine().getStatusCode());
       return MoreStrings.fromUtf8(response.getEntity().getContent());
     } catch (Exception e) {
-      throw Throwables.propagate(e);
+      throw new RuntimeException(e);
     }
   }
 }
