@@ -1,11 +1,5 @@
 package io.bold.sfe.web;
 
-import io.bold.sfe.config.BasicServiceConfig;
-import io.bold.sfe.integrations.IntegrationsConfig;
-import io.bold.sfe.service.Env;
-import io.bold.sfe.web.js.InjectedScripts;
-import io.bold.sfe.web.react.ReactBridge;
-import io.bold.sfe.web.webpack.WebpackAssetResolver;
 import com.google.common.base.Charsets;
 import com.google.common.base.Strings;
 import com.google.common.html.types.SafeScripts;
@@ -14,6 +8,11 @@ import com.google.inject.Provider;
 import com.google.template.soy.data.SanitizedContent;
 import com.google.template.soy.data.SanitizedContents;
 import com.google.template.soy.tofu.SoyTofu;
+import io.bold.sfe.config.BasicServiceConfig;
+import io.bold.sfe.integrations.IntegrationsConfig;
+import io.bold.sfe.web.js.InjectedScripts;
+import io.bold.sfe.web.react.ReactBridge;
+import io.bold.sfe.web.webpack.WebpackAssetResolver;
 import io.dropwizard.views.View;
 import io.dropwizard.views.ViewRenderer;
 
@@ -30,24 +29,21 @@ import java.util.stream.Collectors;
 public class PageViewRenderer implements ViewRenderer {
 
   private final Provider<SoyTofu> tofuProvider;
-  private final ReactBridge reactBridge;
+  private final Provider<ReactBridge> reactBridgeProvider;
   private final DataSerializer serializer;
   private final WebpackAssetResolver webpackAssetResolver;
   private final BasicServiceConfig config;
-  private final Env env;
 
   @Inject PageViewRenderer(Provider<SoyTofu> tofuProvider,
-                           ReactBridge reactBridge,
+                           Provider<ReactBridge> reactBridgeProvider,
                            DataSerializer serializer,
                            WebpackAssetResolver webpackAssetResolver,
-                           BasicServiceConfig config,
-                           Env env) {
+                           BasicServiceConfig config) {
     this.tofuProvider = tofuProvider;
-    this.reactBridge = reactBridge;
+    this.reactBridgeProvider = reactBridgeProvider;
     this.serializer = serializer;
     this.webpackAssetResolver = webpackAssetResolver;
     this.config = config;
-    this.env = env;
   }
 
   @Override
@@ -69,7 +65,7 @@ public class PageViewRenderer implements ViewRenderer {
 
     Map<String, Object> props = new HashMap<>(serializer.serializeToMap(pageView.getData()));
     if (!Strings.isNullOrEmpty(reactComponentName) && !forceClientSideRendering) {
-      bodyHtml = reactBridge.render(reactComponentName, props, pageView.getGlobalData());
+      bodyHtml = reactBridgeProvider.get().render(reactComponentName, props, pageView.getGlobalData());
     }
 
     SoyTofu tofu = tofuProvider.get();

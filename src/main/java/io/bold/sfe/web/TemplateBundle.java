@@ -10,10 +10,11 @@ import io.bold.sfe.web.soy.SoyTemplateModule;
 import io.bold.sfe.web.soy.SoyTemplateViewRenderer;
 import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewMessageBodyWriter;
-import jersey.repackaged.com.google.common.collect.ImmutableList;
+import io.dropwizard.views.ViewRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class TemplateBundle<T extends BasicServiceConfig> implements ConfiguredGuiceBundle<T> {
@@ -33,11 +34,14 @@ public final class TemplateBundle<T extends BasicServiceConfig> implements Confi
   }
 
   @Override public void run(Injector injector, T configuration, Environment environment) throws Exception {
-    SoyTemplateViewRenderer soyRenderer = injector.getInstance(SoyTemplateViewRenderer.class);
-    ReactViewRenderer reactRenderer = injector.getInstance(ReactViewRenderer.class);
-    PageViewRenderer pageRenderer = injector.getInstance(PageViewRenderer.class);
-    environment.jersey().register(
-      new ViewMessageBodyWriter(environment.metrics(),
-      ImmutableList.of(soyRenderer, reactRenderer, pageRenderer)));
+    List<ViewRenderer> renderers = new ArrayList<>();
+    if (!soyFiles.isEmpty()) {
+      renderers.add(injector.getInstance(SoyTemplateViewRenderer.class));
+    }
+    if (!reactFiles.isEmpty()) {
+      renderers.add(injector.getInstance(ReactViewRenderer.class));
+    }
+    renderers.add(injector.getInstance(PageViewRenderer.class));
+    environment.jersey().register(new ViewMessageBodyWriter(environment.metrics(), renderers));
   }
 }

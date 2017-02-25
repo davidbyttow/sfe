@@ -2,6 +2,7 @@ package io.bold.sfe.web.react;
 
 import com.google.common.base.Charsets;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import io.bold.sfe.web.DataSerializer;
 import io.dropwizard.views.View;
 import io.dropwizard.views.ViewRenderer;
@@ -18,11 +19,11 @@ import java.util.Map;
  */
 public class ReactViewRenderer implements ViewRenderer {
 
-  private final ReactBridge react;
+  private final Provider<ReactBridge> reactBridgeProvider;
   private final DataSerializer serializer;
 
-  @Inject ReactViewRenderer(ReactBridge react, DataSerializer serializer) {
-    this.react = react;
+  @Inject ReactViewRenderer(Provider<ReactBridge> reactBridgeProvider, DataSerializer serializer) {
+    this.reactBridgeProvider = reactBridgeProvider;
     this.serializer = serializer;
   }
 
@@ -38,7 +39,7 @@ public class ReactViewRenderer implements ViewRenderer {
   @Override
   public void render(View view, Locale locale, OutputStream output) throws IOException, WebApplicationException {
     ReactComponent component = (ReactComponent) view;
-    String result = component.render(react, serializer);
+    String result = component.render(reactBridgeProvider.get(), serializer);
 
     OutputStreamWriter writer = new OutputStreamWriter(output, Charsets.UTF_8);
     writer.write(result);

@@ -33,7 +33,7 @@ public class ReactBridge {
   private final String renderCodeTemplate;
   private String lastPrecompiledCode;
 
-  private ReactBridge(ResourceLoader resourceLoader, Env env, ObjectMapper objectMapper, ScriptEngine js, FilesProvider filesProvider, String renderCodeTemplate) {
+  private ReactBridge(Env env, ObjectMapper objectMapper, ScriptEngine js, FilesProvider filesProvider, String renderCodeTemplate) {
     this.env = env;
     this.objectMapper = objectMapper;
     this.js = js;
@@ -92,7 +92,7 @@ public class ReactBridge {
     } catch (IOException | ScriptException e) {
       throw Throwables.propagate(e);
     }
-    ReactBridge bridge = new ReactBridge(resourceLoader, env, objectMapper, js, filesProvider, renderCodeTemplate);
+    ReactBridge bridge = new ReactBridge(env, objectMapper, js, filesProvider, renderCodeTemplate);
     if (!env.isLocalDevelopment()) {
       bridge.precompileAll();
     }
