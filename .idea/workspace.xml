@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="101ffef9-98d2-4924-877a-6e5adb86f72c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/PageViewRenderer.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/PageViewRenderer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/TemplateBundle.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/TemplateBundle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/react/ReactBridge.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/react/ReactBridge.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/react/ReactTemplateModule.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/react/ReactTemplateModule.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/react/ReactViewRenderer.java" afterPath="$PROJECT_DIR$/src/main/java/io/bold/sfe/web/react/ReactViewRenderer.java" />
-    </list>
+    <list default="true" id="101ffef9-98d2-4924-877a-6e5adb86f72c" name="Default" comment="" />
     <ignored path="sfe.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -1300,7 +1293,7 @@
       <workItem from="1487460770015" duration="8000" />
       <workItem from="1487831140321" duration="3421000" />
       <workItem from="1487918276187" duration="3831000" />
-      <workItem from="1487957338054" duration="2198000" />
+      <workItem from="1487957338054" duration="2527000" />
     </task>
     <servers />
   </component>
@@ -1337,11 +1330,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71231000" />
+    <option name="totallyTimeSpent" value="71560000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="135" width="1559" height="1280" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1363,7 +1356,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919767" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19948685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19948685" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32827005" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2873637" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />

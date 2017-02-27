@@ -16,7 +16,7 @@ public abstract class AbstractEntityCache<T> implements EntityCache<T> {
   private final InMemoryLoadingCache<String, T> cache;
   private final CacheLoader<String, T> loadById;
 
-  AbstractEntityCache(Class<T> type, Duration cachingDuration, EntityStoreAsync entityStore) {
+  public AbstractEntityCache(Class<T> type, Duration cachingDuration, EntityStoreAsync entityStore) {
     this.entityStore = entityStore;
     this.loadById = Loaders.newIdLoader(entityStore, type);
     this.cache = InMemoryLoadingCache.create(
