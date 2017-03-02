@@ -11,7 +11,6 @@ import com.google.inject.Inject;
 import io.bold.sfe.concurrent.BackgroundThreadPool;
 import io.bold.sfe.mail.MailSender;
 import io.bold.sfe.mail.Messages;
-import io.bold.sfe.service.Env;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,14 +21,11 @@ public class SesMailSender implements MailSender {
 
   private static final Logger log = LoggerFactory.getLogger(SesMailSender.class);
 
-  private final Env env;
   private final AmazonSimpleEmailServiceClient client;
   private final ListeningExecutorService listeningExecutorService;
 
-  @Inject SesMailSender(Env env,
-                        AmazonSimpleEmailServiceClient client,
+  @Inject SesMailSender(AmazonSimpleEmailServiceClient client,
                         @BackgroundThreadPool ListeningExecutorService listeningExecutorService) {
-    this.env = env;
     this.client = client;
     this.listeningExecutorService = listeningExecutorService;
   }

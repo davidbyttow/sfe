@@ -9,6 +9,9 @@ import io.bold.sfe.service.InstanceMetadata;
 
 /** Metadata for local development instances */
 public class LocalInstanceMetadata implements InstanceMetadata {
+
+  @Override public boolean isLocal() { return true; }
+
   @Override public String getRegion() {
     return "local";
   }

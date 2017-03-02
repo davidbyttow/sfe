@@ -9,8 +9,6 @@ import io.bold.sfe.concurrent.BackgroundThreadPoolBundle;
 import io.bold.sfe.config.BasicServiceConfig;
 import io.bold.sfe.config.CommonConfigBundle;
 import io.bold.sfe.environment.aws.AwsEnvBundle;
-import io.bold.sfe.environment.aws.AwsInstanceMetadata;
-import io.bold.sfe.environment.local.LocalEnvBundle;
 import io.bold.sfe.inject.ConfiguredGuiceBundle;
 import io.bold.sfe.inject.GuiceBootstrap;
 import io.bold.sfe.inject.LazySingleton;
@@ -27,8 +25,6 @@ import org.slf4j.LoggerFactory;
 public class BasicServiceBundle<T extends BasicServiceConfig> implements ConfiguredGuiceBundle<T> {
 
   private static final Logger logger = LoggerFactory.getLogger(BasicServiceBundle.class);
-
-  private static final boolean FORCE_AWS = false;
 
   @Override public void initialize(GuiceBootstrap<?> bootstrap) {
     bootstrap.addModule(new EnvModule());
@@ -50,12 +46,7 @@ public class BasicServiceBundle<T extends BasicServiceConfig> implements Configu
     typedBootstrap.addBundle(new CommonConfigBundle<>());
     typedBootstrap.addBundle(new JsonBundle<>());
     typedBootstrap.addBundle(new CacheBundle<>());
-
-    if (FORCE_AWS || AwsInstanceMetadata.isAvailable()) {
-      typedBootstrap.addBundle(new AwsEnvBundle<>());
-    } else {
-      typedBootstrap.addBundle(new LocalEnvBundle<>());
-    }
+    typedBootstrap.addBundle(new AwsEnvBundle<>());
 
     // TODO(d): Add logging bundle
   }

@@ -39,6 +39,10 @@ public class AwsInstanceMetadata implements InstanceMetadata {
     return InstanceHostProvider.AWS;
   }
 
+  @Override public boolean isLocal() {
+    return false;
+  }
+
   public static boolean isAvailable() {
     try {
       new AwsInstanceMetadata().getRegion();
