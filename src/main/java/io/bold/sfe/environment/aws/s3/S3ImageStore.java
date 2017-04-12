@@ -1,11 +1,7 @@
 package io.bold.sfe.environment.aws.s3;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.model.CannedAccessControlList;
-import com.amazonaws.services.s3.model.GetObjectRequest;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.S3Object;
+import com.amazonaws.services.s3.AmazonS3Client;
+import com.amazonaws.services.s3.model.*;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.inject.Inject;
@@ -23,9 +19,9 @@ public class S3ImageStore implements ImageStore {
   // TODO(d): Provide this.
   private static final String BUCKET_NAME = "bold-inc";
 
-  private final AmazonS3 client;
+  private final AmazonS3Client client;
 
-  @Inject S3ImageStore(AmazonS3 client) {
+  @Inject S3ImageStore(AmazonS3Client client) {
     this.client = client;
   }
 
