@@ -1,5 +1,6 @@
 package io.bold.sfe.integrations;
 
+import com.simplethingsllc.framework.integrations.apns.ApnsConfig;
 import com.simplethingsllc.framework.integrations.twilio.TwilioConfig;
 import io.bold.sfe.integrations.algolia.AlgoliaConfig;
 import io.bold.sfe.integrations.cm.CampaignMonitorConfig;
@@ -15,6 +16,7 @@ import io.bold.sfe.integrations.twitter.TwitterAuthConfig;
 
 public class IntegrationsConfig {
   public AlgoliaConfig algolia;
+  public ApnsConfig apns;
   public CampaignMonitorConfig campaignMonitor;
   public EmbedlyConfig embedly;
   public GoogleAnalyticsConfig googleAnalytics;
