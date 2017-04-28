@@ -30,7 +30,7 @@ public class IndexGenerator {
     StringBuilder sqlBuilder = new StringBuilder();
     sqlBuilder.append(String.format(
         "CREATE TABLE %s(\n" +
-            "entity_id VARCHAR(128) NOT NULL,\n" +
+            "entity_id VARCHAR(1024) NOT NULL,\n" +
             "updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n", tableName));
 
     for (EntityPropField propField : index.getFields()) {

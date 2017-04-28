@@ -8,16 +8,16 @@ public class EntityPropertiesGenerator {
 
   private static final String PROPERTIES_TABLE_FORMAT =
       "CREATE TABLE %s_properties(\n" +
-          "  entity_id       VARCHAR(128) NOT NULL,\n" +
+          "  entity_id       VARCHAR(512) NOT NULL,\n" +
           "  prop_key        VARCHAR(128) NOT NULL,\n" +
           "  updated_at      TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n" +
           "  prop_bool       TINYINT(1),\n" +
           "  prop_int        INTEGER,\n" +
           "  prop_long       BIGINT,\n" +
           "  prop_float      FLOAT,\n" +
-          "  prop_text       TEXT,\n" +
+          "  prop_text       MEDIUMTEXT,\n" +
           "  prop_datetime   DATETIME,\n" +
-          "  prop_id         VARCHAR(256),\n" +
+          "  prop_id         VARCHAR(1024),\n" +
           "  PRIMARY KEY(entity_id, prop_key)\n" +
           ") ENGINE=InnoDB DEFAULT CHARSET='utf8';\n";
 
