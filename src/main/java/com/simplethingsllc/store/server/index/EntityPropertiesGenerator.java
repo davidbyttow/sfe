@@ -17,7 +17,7 @@ public class EntityPropertiesGenerator {
           "  prop_float      FLOAT,\n" +
           "  prop_text       MEDIUMTEXT,\n" +
           "  prop_datetime   DATETIME,\n" +
-          "  prop_id         VARCHAR(1024),\n" +
+          "  prop_id         VARCHAR(512),\n" +
           "  PRIMARY KEY(entity_id, prop_key)\n" +
           ") ENGINE=InnoDB DEFAULT CHARSET='utf8';\n";
 
