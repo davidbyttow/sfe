@@ -21,4 +21,8 @@ public class ForwardingCachingStore<T> implements EntityCache<T> {
   @Override public void put(T entity) {
     store.put(entity);
   }
+
+  @Override public void remove(String id) {
+    store.remove(id);
+  }
 }

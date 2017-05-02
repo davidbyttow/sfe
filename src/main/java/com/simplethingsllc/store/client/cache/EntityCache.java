@@ -6,4 +6,6 @@ public interface EntityCache<T> {
   T get(String id, CachePolicy policy);
 
   void put(T entity);
+
+  void remove(String id);
 }

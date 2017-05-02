@@ -34,4 +34,6 @@ public abstract class AbstractEntityCache<T> implements EntityCache<T> {
   protected void save(String key, T entity) {
     cache.put(key, entity);
   }
+
+  protected void delete(String key) { cache.remove(key); }
 }

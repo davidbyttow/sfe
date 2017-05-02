@@ -31,6 +31,11 @@ public class CachingStore<T> extends AbstractEntityCache<T> {
     }
   }
 
+  @Override public void remove(String id) {
+    entityStore.delete(id, type);
+    this.delete(id);
+  }
+
   CachingStore<T> withFieldKey(FieldKey<T> fieldKey) {
     String name = fieldKey.getName();
     secondaryLoaders.put(name, Loaders.newSecondaryIdLoader(entityStore, name, type));
